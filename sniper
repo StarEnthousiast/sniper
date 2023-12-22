@@ -10,8 +10,8 @@ if not getgenv().a then
     end)
 end
 
-local function processListingInfo(uid, gems, item, version, shiny, amount, boughtFrom)
-    print(uid, gems, item, version, shiny, amount, boughtFrom)
+local function processListingInfo(uid, gems, item, version, shiny, amount, boughtFrom, exclusive)
+    print(uid, gems, item, version, shiny, amount, boughtFrom, exclusive)
     print("BOUGHT FROM:", boughtFrom)
     print("UID:", uid)
     print("GEMS:", gems)
@@ -91,15 +91,15 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
     )
 end
 
-local function checklisting(uid, gems, item, version, shiny, amount, username, playerid)
+local function checklisting(uid, gems, item, version, shiny, amount, username, playerid, exclusive)
     gems = tonumber(gems)
 
     if string.find(item, "Huge") and gems <= 1000000 then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username)
-    elseif gems <= 5 then
+        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+    elseif exclusive and gems <= 1000 then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username)
+        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
     end
 end
 
@@ -121,7 +121,8 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
                         local version = data["pt"]
                         local shiny = data["sh"]
                         local amount = data["_am"]
-                        checklisting(uid, gems, item, version, shiny, amount, username , playerID)
+                        local exclusive = data["excl"]
+                        checklisting(uid, gems, item, version, shiny, amount, username , playerID, exclusive)
                     end
                 end
             end
