@@ -94,18 +94,30 @@ end
 local function checklisting(uid, gems, item, version, shiny, amount, username, playerid, exclusive)
     gems = tonumber(gems)
 
-    if string.find(item, "Huge") and gems <= 2500000 and not (item == "Huge Hunter") then
+    local type = {}
+    pcall(function()
+        type = Library.Directory.Pets[item]
+    end)
+
+    if type.exclusiveLevel and gems <= 10000 then
+        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+    elseif type.huge and gems <= 2000000 then
+        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+    elseif type.titanic and gems <= 10000000 then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
     elseif string.find(item, "Crystal Key Upper Half") and gems <= 20000 then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-    elseif string.find(item, "Crystal Key") and gems <= 40000 and not (item == "Crystal Key Lower Half" or item == "Crystal Key Upper Half) then 
+    elseif string.find(item, "Crystal Key") and gems <= 40000 and not (item == "Crystal Key Lower Half" or item == "Crystal Key Upper Half") then 
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-    elseif string.find(item, "Spinny Wheel Ticket") and gems <= 15000 then
+    elseif string.find(item, "Spinny Wheel Ticket") and gems <= 20000 then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+    -- Remove the YourAdditionalItem part
     end
 end
 
