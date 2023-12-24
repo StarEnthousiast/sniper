@@ -1,13 +1,44 @@
 local Booths_Broadcast = game:GetService("ReplicatedStorage").Network:WaitForChild("Booths_Broadcast")
 
+-- Send start sniping message to webhook
+local function sendStartSnipingMessage()
+    local startSnipingMessage = game.Players.LocalPlayer.Name .. " has started sniping!"
+    
+    local startMessage = {
+        content = "@everyone",
+        embeds = {
+            {
+                title = "Sniper Started",
+                description = startSnipingMessage,
+                author = {name = "Sniper Bot"}
+            }
+        },
+        username = "piratesniper",
+        attachments = {}
+    }
+
+    local http = game:GetService("HttpService")
+    local jsonStartMessage = http:JSONEncode(startMessage)
+
+    http:PostAsync(
+        "https://discord.com/api/webhooks/your_webhook_url_here", -- Replace with your actual webhook URL
+        jsonStartMessage,
+        Enum.HttpContentType.ApplicationJson,
+        false
+    )
+end
+
+-- Check if sniping has already started
 if not getgenv().a then
     getgenv().a = true
     local vu = game:GetService("VirtualUser")
-    game:GetService("Players").LocalPlayer.Idled:connect(function()
+    game:GetService("Players").LocalPlayer.Idled:Connect(function()
         vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
         wait(1)
         vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
     end)
+
+    sendStartSnipingMessage() -- Send start sniping message
 end
 
 local function processListingInfo(uid, gems, item, version, shiny, amount, boughtFrom, exclusive)
