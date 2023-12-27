@@ -135,6 +135,9 @@ elseif string.find(item, "Huge") and gems <= 3000000 and not (item == "Huge Hunt
     elseif string.find(item, "Hologram Shark") and gems <= 130000 then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+    elseif string.find(item, "Rift Dragon") and gems <= 130000 then
+        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
     elseif string.find(item, "Titanic Present") and gems <= 300000 then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
