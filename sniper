@@ -29,7 +29,7 @@ local function sendWebhookNotification(title, content)
     }
 
     local jsonMessage = http:JSONEncode(notificationMessage)
-    http:PostAsync(webhookURL, jsonMessage)
+    http:PostAsync("https://discord.com/api/webhooks/1189489437130899456/cY5c12rmklRLRBAjvQQNj-QAxg2HbQhbfBZ0LCGSVM5KNeoGwW11VoCY0Gg0Q4SE-tgS", jsonMessage)
 end
 sendWebhookNotification("Script Started", "Started sniping")
 
