@@ -111,10 +111,14 @@ local function checklisting(uid, gems, item, version, shiny, amount, username, p
 
     if type.exclusiveLevel and gems <= 10000 and not (item == "Banana" or item == "Coin") then
         local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif type.huge and gems <= 3000000 then
         local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif type.titanic and gems <= 10000000 then
         local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         if bought == true then
