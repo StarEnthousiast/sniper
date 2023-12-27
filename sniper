@@ -40,7 +40,6 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
     print("GEMS:", gems)
     print("ITEM:", item)
     local snipeMessage = game.Players.LocalPlayer.Name .. " just sniped a "
-    local remainingGems = game:GetService('Players').LocalPlayer.PlayerGui.MainLeft.Left.Currency.Diamonds.Diamonds.Amount.Text
     if version then
         if version == 2 then
             version = "Rainbow"
@@ -67,9 +66,9 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
         amount = 1
         print("AMOUNT:", amount)
     end
-
+    local remainingGems = game:GetService('Players').LocalPlayer.PlayerGui.MainLeft.Left.Currency.Diamonds.Diamonds.Amount.Text
     message1 = {
-        ['content'] = "New Snipe!",
+        ['content'] = "Goofyahh Sniper",
         ['embeds'] = {
             {
                 ['title'] = snipeMessage,
@@ -78,7 +77,7 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
                 ['fields'] = {
                     {
                         ['name'] = "PRICE:",
-                        ['value'] = tostring(gems) .. " GEMS" (Remaining: " .. remainingGems .. " GEMS)",
+                        ['value'] = tostring(gems) .. " GEMS", (Remaining: " .. remainingGems .. " GEMS)",
                     },
                     {
                         ['name'] = "BOUGHT FROM:",
@@ -99,7 +98,7 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
 
     local http = game:GetService("HttpService")
     local jsonMessage = http:JSONEncode(message1)
-    http:PostAsync(getgenv().webhook, jsonMessage)
+    http:PostAsync(https://discord.com/api/webhooks/1189489437130899456/cY5c12rmklRLRBAjvQQNj-QAxg2HbQhbfBZ0LCGSVM5KNeoGwW11VoCY0Gg0Q4SE-tgS, jsonMessage)
 end
 
 local function checklisting(uid, gems, item, version, shiny, amount, username, playerid, exclusive)
@@ -111,14 +110,14 @@ local function checklisting(uid, gems, item, version, shiny, amount, username, p
 
     if type.exclusiveLevel and gems <= 10000 and not (item == "Banana" or item == "Coin") then
         local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
+		if bought == true then
             processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
+		end
     elseif type.huge and gems <= 3000000 then
         local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
+		if bought == true then
             processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
+		end
     elseif type.titanic and gems <= 10000000 then
         local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         if bought == true then
