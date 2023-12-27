@@ -1,4 +1,4 @@
-getgenv().webhook = "https://discord.com/api/webhooks/1188825764636917790/t0V7fp_yPsy1cwzgZ5hU5UUm9HfYtzNKeTOh0niRySzZa4O7s4RX3ViTdvKxai0kxH5n"
+getgenv().webhook = "https://discord.com/api/webhooks/1189489437130899456/cY5c12rmklRLRBAjvQQNj-QAxg2HbQhbfBZ0LCGSVM5KNeoGwW11VoCY0Gg0Q4SE-tgS"
 getgenv().alts = {"splasie", "universoul20","universoul30","Tygotelindert","BrendaParker7"}
 if game.PlaceId == 15502339080 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/StarEnthousiast/sniper/main/sniper"))()
