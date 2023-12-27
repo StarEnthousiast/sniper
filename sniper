@@ -4,29 +4,6 @@ local message1 = {}
 local Players = game:GetService('Players')
 local PlayerInServer = #Players:GetPlayers()
 local ostime = os.time()
-local HttpService = game:GetService("HttpService")
-local DateTime = require(game:GetService("ReplicatedStorage").DateTime)
-local request = require(game:GetService("ReplicatedStorage").request)
-
-
-local function sendStartMessage()
-    local startMessage = {
-        ['content'] = "Script Start Notification",
-        ['embeds'] = {
-            {
-                ['title'] = "Script has started successfully",
-                ["color"] = tonumber(0x00ff00),
-                ["timestamp"] = DateTime.now():ToIsoDate(),
-            },
-        }
-    }
-
-    local http = game:GetService("HttpService")
-    local jsonMessage = http:JSONEncode(startMessage)
-    http:PostAsync(getgenv().webhook, jsonMessage)
-end
-
-sendStartMessage()
 
 if not getgenv().a then
     getgenv().a = true
@@ -128,7 +105,7 @@ local function checklisting(uid, gems, item, version, shiny, amount, username, p
 elseif string.find(item, "Huge") and gems <= 3000000 and not (item == "Huge Hunter") then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-    elseif string.find(item, "Crystal Key Lower Half") and gems <= 7000 then
+    elseif string.find(item, "Crystal Key Lower Half") and gems <= 10000 then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
     elseif string.find(item, "Crystal Key") and gems <= 40000 and not (item == "Crystal Key Lower Half" or item == "Crystal Key Upper Half") then 
@@ -196,33 +173,7 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
         end
     end
 end)
-
-
-
-local function sendNotification(trigger)
-    local message = {
-        ['content'] = "Server Jump Notification",
-        ['embeds'] = {
-            {
-                ['title'] = "Jumping to a new server",
-                ["color"] = tonumber(0xFF5733),
-                ["timestamp"] = DateTime.now():ToIsoDate(),
-                ['fields'] = {
-                    {
-                        ['name'] = "Triggered by:",
-                        ['value'] = trigger,
-                    },
-                },
-            },
-        }
-    }
-
-    local http = game:GetService("HttpService")
-    local jsonMessage = http:JSONEncode(message)
-    http:PostAsync(getgenv().webhook, jsonMessage)
-end
-
-local function jumpToServer(trigger) 
+local function jumpToServer() 
     local sfUrl = "https://games.roblox.com/v1/games/%s/servers/Public?sortOrder=%s&limit=%s&excludeFullGames=true" 
     local req = request({ Url = string.format(sfUrl, 15502339080, "Desc", 100) }) 
     local body = game:GetService("HttpService"):JSONDecode(req.Body) 
@@ -247,14 +198,13 @@ local function jumpToServer(trigger)
         randomCount = 2
     end
     game:GetService("TeleportService"):TeleportToPlaceInstance(15502339080, servers[math.random(1, randomCount)], game:GetService("Players").LocalPlayer) 
-    sendNotification(trigger)
 end
 
 
 local function startTimer()
     while true do
         wait(1080)  -- 18 minutes (18 * 60 seconds)
-        jumpToServer("18 minutes passed")  -- Trigger the jumpToServer function every 18 minutes
+        jumpToServer()  -- Trigger the jumpToServer function every 18 minutes
     end
 end
 startTimer()
@@ -263,15 +213,15 @@ startTimer()
 while wait(0.1) do
     PlayerInServer = #Players:GetPlayers()
     if PlayerInServer < 35 or os.time() >= ostime + 600 then
-        jumpToServer("less than 35 players in server")
+        jumpToServer()
         break
     end
     for count = 1, #alts, 1 do
         if game.Players:FindFirstChild(alts[count]) and alts[count] ~= game:GetService("Players").LocalPlayer.Name then
-            jumpToServer(found blacklist in server)
+            jumpToServer()
             break
-        elseif player and player:IsInGroup(5060810) then
-            jumpToServer("found staff")
+        elseif player:IsInGroup(5060810) then
+            jumpToServer()
             break
         end
     end
