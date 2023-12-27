@@ -3,6 +3,9 @@ local message1 = {}
 local Players = game:GetService('Players')
 local PlayerInServer = #Players:GetPlayers()
 local ostime = os.time()
+local HttpService = game:GetService("HttpService")
+local DateTime = require(game:GetService("ReplicatedStorage").DateTime)
+local request = require(game:GetService("ReplicatedStorage").request)
 
 
 local function sendStartMessage()
@@ -266,7 +269,7 @@ while wait(0.1) do
         if game.Players:FindFirstChild(alts[count]) and alts[count] ~= game:GetService("Players").LocalPlayer.Name then
             jumpToServer(found blacklist in server)
             break
-        elseif player:IsInGroup(5060810) then
+        elseif player and player:IsInGroup(5060810) then
             jumpToServer("found staff")
             break
         end
