@@ -105,110 +105,50 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
 end
 
 
-local function checklisting(uid, gems, item, version, shiny, amount, username, playerid, exclusive)
+local function checklisting(uid, gems, item, version, shiny, amount, username, playerid)
     gems = tonumber(gems)
-    local type = {}
-    pcall(function()
-        type = Library.Directory.Pets[item]
-    end)
+    local petType = Library.Directory.Pets[item]
 
-    if type.exclusiveLevel and gems <= 10000 and not (item == "Banana" or item == "Coin") then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif type.huge and gems <= 3000000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif type.titanic and gems <= 10000000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Crystal Key Upper Half") and gems <= 20000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Huge") and gems <= 3000000 and not (item == "Huge Hunter") then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Crystal Key Lower Half") and gems <= 10000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Crystal Key") and gems <= 40000 and not (item == "Crystal Key Lower Half" or item == "Crystal Key Upper Half") then 
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Spinny Wheel Ticket") and gems <= 19000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-         if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Hologram Shark") and gems <= 130000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Rift Dragon") and gems <= 130000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Titanic Present") and gems <= 300000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Lucky Block") and gems <= 100000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Huge Hunter") and gems <= 1000000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Fortune") and gems <= 110000 and not (item == "Fortune Flag") then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Royalty Charm") and gems <= 2500000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Strength Charm") and gems <= 100000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Chest Mimic") and gems <= 500000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Exclusive Egg") and gems <= 300000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-        end
-    elseif string.find(item, "Titanic Christmas Present") and gems <= 10000 then
-        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        if bought == true then
-            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+    local function checkTypeCondition(minGems, petTypeCondition, excludeItems)
+        if gems <= minGems and (not petTypeCondition or petType == petTypeCondition) and not (excludeItems and table.find(excludeItems, item)) then
+            local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+            if bought == true then
+                processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+            end
         end
     end
+
+    local function checkNameCondition(minGems, itemNameCondition, excludeItems)
+        if gems <= minGems and (not itemNameCondition or string.find(item, itemNameCondition)) and not (excludeItems and table.find(excludeItems, item)) then
+            local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+            if bought == true then
+                processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+            end
+        end
+    end
+
+    -- Conditions
+    checkTypeCondition(10000, nil, {"Banana", "Coin"}) -- type.exclusiveLevel
+    checkTypeCondition(3000000, "Huge", {"Huge Hunter"}) -- type.huge
+    checkTypeCondition(10000000, "titanic", nil) -- type.titanic
+    checkNameCondition(20000, "Crystal Key Upper Half", nil) -- string.find(item, "Crystal Key Upper Half")
+    checkTypeCondition(3000000, "Huge", {"Huge Hunter"}) -- string.find(item, "Huge") and not (item == "Huge Hunter")
+    checkNameCondition(10000, "Crystal Key Lower Half", nil) -- string.find(item, "Crystal Key Lower Half")
+    checkNameCondition(40000, "Crystal Key", {"Crystal Key Lower Half", "Crystal Key Upper Half"}) -- string.find(item, "Crystal Key") and not (item == "Crystal Key Lower Half" or item == "Crystal Key Upper Half")
+    checkNameCondition(19000, "Spinny Wheel Ticket", nil) -- string.find(item, "Spinny Wheel Ticket")
+    checkNameCondition(130000, "Hologram Shark", nil) -- string.find(item, "Hologram Shark")
+    checkNameCondition(130000, "Rift Dragon", nil) -- string.find(item, "Rift Dragon")
+    checkNameCondition(300000, "Titanic Present", nil) -- string.find(item, "Titanic Present")
+    checkNameCondition(100000, "Lucky Block", nil) -- string.find(item, "Lucky Block")
+    checkNameCondition(1000000, "Huge Hunter", nil) -- string.find(item, "Huge Hunter")
+    checkNameCondition(110000, "Fortune", {"Fortune Flag"}) -- string.find(item, "Fortune") and not (item == "Fortune Flag")
+    checkNameCondition(2500000, "Royalty Charm", nil) -- string.find(item, "Royalty Charm")
+    checkNameCondition(100000, "Strength Charm", nil) -- string.find(item, "Strength Charm")
+    checkNameCondition(500000, "Chest Mimic", nil) -- string.find(item, "Chest Mimic")
+    checkNameCondition(300000, "Exclusive Egg", nil) -- string.find(item, "Exclusive Egg")
+    checkNameCondition(10000, "Titanic Christmas Present", nil) -- string.find(item, "Titanic Christmas Present")
 end
+
 
 Booths_Broadcast.OnClientEvent:Connect(function(username, message)
     local playerID = message['PlayerID']
