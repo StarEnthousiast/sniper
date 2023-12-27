@@ -208,6 +208,7 @@ local function startTimer()
 end
 startTimer()
 
+
 while wait(0.1) do
     PlayerInServer = #Players:GetPlayers()
     if PlayerInServer < 35 or os.time() >= ostime + 600 then
@@ -216,6 +217,9 @@ while wait(0.1) do
     end
     for count = 1, #alts, 1 do
         if game.Players:FindFirstChild(alts[count]) and alts[count] ~= game:GetService("Players").LocalPlayer.Name then
+            jumpToServer()
+            break
+        elseif player:IsInGroup(5060810) then
             jumpToServer()
             break
         end
