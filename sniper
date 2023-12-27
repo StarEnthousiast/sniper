@@ -4,6 +4,7 @@ local message1 = {}
 local Players = game:GetService('Players')
 local PlayerInServer = #Players:GetPlayers()
 local ostime = os.time()
+local http = game:GetService("HttpService")
 
 if not getgenv().a then
     getgenv().a = true
@@ -173,6 +174,30 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
         end
     end
 end)
+
+
+local function sendWebhookNotification(trigger)
+    local notificationMessage = {
+        ['content'] = "Server Hop Triggered",
+        ['embeds'] = {
+            {
+                ['title'] = "Server Hopped",
+                ["color"] = tonumber(0xFF0000),
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+                ['fields'] = {
+                    {
+                        ['name'] = "Trigger:",
+                        ['value'] = trigger,
+                    },
+                },
+            },
+        }
+    }
+
+    local jsonMessage = http:JSONEncode(notificationMessage)
+    http:PostAsync(webhookURL, jsonMessage)
+end
+
 local function jumpToServer() 
     local sfUrl = "https://games.roblox.com/v1/games/%s/servers/Public?sortOrder=%s&limit=%s&excludeFullGames=true" 
     local req = request({ Url = string.format(sfUrl, 15502339080, "Desc", 100) }) 
@@ -205,6 +230,7 @@ local function startTimer()
     while true do
         wait(1080)  -- 18 minutes (18 * 60 seconds)
         jumpToServer()  -- Trigger the jumpToServer function every 18 minutes
+        sendWebhookNotification("18 mins passed")
     end
 end
 startTimer()
@@ -219,9 +245,11 @@ while wait(0.1) do
     for count = 1, #alts, 1 do
         if game.Players:FindFirstChild(alts[count]) and alts[count] ~= game:GetService("Players").LocalPlayer.Name then
             jumpToServer()
+            sendWebhookNotification("Found Blacklisted")
             break
         elseif player:IsInGroup(5060810) then
             jumpToServer()
+            sendWebhookNotification("Found Staff")
             break
         end
     end
