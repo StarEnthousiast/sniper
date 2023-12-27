@@ -92,7 +92,7 @@ local function checklisting(uid, gems, item, version, shiny, amount, username, p
     if type.exclusiveLevel and gems <= 10000 and not (item == "Banana" or item == "Coin") then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-    elseif type.huge and gems <= 2500000 then
+    elseif type.huge and gems <= 3000000 then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
     elseif type.titanic and gems <= 10000000 then
@@ -101,7 +101,7 @@ local function checklisting(uid, gems, item, version, shiny, amount, username, p
     elseif string.find(item, "Crystal Key Upper Half") and gems <= 20000 then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-elseif string.find(item, "Huge") and gems <= 2500000 and not (item == "Huge Hunter") then
+elseif string.find(item, "Huge") and gems <= 3000000 and not (item == "Huge Hunter") then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
     elseif string.find(item, "Crystal Key Lower Half") and gems <= 10000 then
@@ -128,7 +128,7 @@ elseif string.find(item, "Huge") and gems <= 2500000 and not (item == "Huge Hunt
     elseif string.find(item, "Fortune") and gems <= 110000 and not (item == "Fortune Flag") then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-    elseif string.find(item, "Royalty Charm") and gems <= 1000000 then
+    elseif string.find(item, "Royalty Charm") and gems <= 2500000 then
         game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
     elseif string.find(item, "Strength Charm") and gems <= 100000 then
