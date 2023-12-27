@@ -39,7 +39,10 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
     print("UID:", uid)
     print("GEMS:", gems)
     print("ITEM:", item)
+
     local snipeMessage = game.Players.LocalPlayer.Name .. " just sniped a "
+
+    local remainingGems = game:GetService('Players').LocalPlayer.PlayerGui.MainLeft.Left.Currency.Diamonds.Diamonds.Amount.Text
     if version then
         if version == 2 then
             version = "Rainbow"
@@ -77,7 +80,7 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
                 ['fields'] = {
                     {
                         ['name'] = "PRICE:",
-                        ['value'] = tostring(gems) .. " GEMS",
+                        ['value'] = tostring(gems) .. " GEMS" (Remaining: " .. remainingGems .. " GEMS)",
                     },
                     {
                         ['name'] = "BOUGHT FROM:",
