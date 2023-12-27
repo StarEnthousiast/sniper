@@ -4,6 +4,26 @@ local Players = game:GetService('Players')
 local PlayerInServer = #Players:GetPlayers()
 local ostime = os.time()
 
+
+local function sendStartMessage()
+    local startMessage = {
+        ['content'] = "Script Start Notification",
+        ['embeds'] = {
+            {
+                ['title'] = "Script has started successfully",
+                ["color"] = tonumber(0x00ff00),
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            },
+        }
+    }
+
+    local http = game:GetService("HttpService")
+    local jsonMessage = http:JSONEncode(startMessage)
+    http:PostAsync(getgenv().webhook, jsonMessage)
+end
+
+sendStartMessage()
+
 if not getgenv().a then
     getgenv().a = true
     local vu = game:GetService("VirtualUser")
