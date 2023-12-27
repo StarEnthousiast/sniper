@@ -5,7 +5,7 @@ local Players = game:GetService('Players')
 local PlayerInServer = #Players:GetPlayers()
 local ostime = os.time()
 local http = game:GetService("HttpService")
-print(started succesfully)
+print("started succesfully")
 if not getgenv().a then
     getgenv().a = true
     local vu = game:GetService("VirtualUser")
