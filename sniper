@@ -24,7 +24,7 @@ local function sendWebhookNotification(title, content)
             {
                 ['title'] = title,
                 ["color"] = tonumber(0xFF0000),
-                ["timestamp"] = DateTime.now():ToIsoDate(),
+                ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%S.000Z"),
             },
         }
     }
