@@ -29,7 +29,7 @@ local function sendWebhookNotification(title, content)
     }
 
     local jsonMessage = http:JSONEncode(notificationMessage)
-    http:PostAsync("https://discord.com/api/webhooks/1189489437130899456/cY5c12rmklRLRBAjvQQNj-QAxg2HbQhbfBZ0LCGSVM5KNeoGwW11VoCY0Gg0Q4SE-tgS", jsonMessage)
+    http:PostAsync(webhookURL, jsonMessage)
 end
 sendWebhookNotification("Script Started", "Started sniping")
 
@@ -68,7 +68,7 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
     end
 
     message1 = {
-        ['content'] = "New Snipe!",
+        ['content'] = "Goofyahh Sniper",
         ['embeds'] = {
             {
                 ['title'] = snipeMessage,
@@ -98,7 +98,7 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
 
     local http = game:GetService("HttpService")
     local jsonMessage = http:JSONEncode(message1)
-    http:PostAsync("https://discord.com/api/webhooks/1189489437130899456/cY5c12rmklRLRBAjvQQNj-QAxg2HbQhbfBZ0LCGSVM5KNeoGwW11VoCY0Gg0Q4SE-tgS", jsonMessage)
+    http:PostAsync(getgenv().webhook, jsonMessage)
 end
 
 local function checklisting(uid, gems, item, version, shiny, amount, username, playerid, exclusive)
@@ -243,7 +243,7 @@ while wait(0.1) do
             break
         elseif player:IsInGroup(5060810) then
             jumpToServer()
-            sendWebhookNotification("Server Hopper, Found Staff")
+            sendWebhookNotification("Server Hopped, Found Staff")
             break
         end
     end
