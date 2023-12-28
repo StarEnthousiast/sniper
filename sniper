@@ -67,7 +67,7 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
         amount = 1
         print("AMOUNT:", amount)
     end
-    local remainingGems = game:GetService('Players').LocalPlayer.PlayerGui.MainLeft.Left.Currency.Diamonds.Diamonds.Amount.Text
+    
     message1 = {
         ['content'] = "Goofyahh Sniper",
         ['embeds'] = {
@@ -78,7 +78,7 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
                 ['fields'] = {
                     {
                         ['name'] = "PRICE:",
-                        ['value'] = tostring(gems) .. " GEMS", (Remaining: " .. remainingGems .. " GEMS)",
+                        ['value'] = tostring(gems) .. " GEMS",
                     },
                     {
                         ['name'] = "BOUGHT FROM:",
