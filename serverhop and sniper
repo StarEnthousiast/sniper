@@ -1,3 +1,4 @@
+getgenv().webhookFail = "https://discord.com/api/webhooks/1189900463013900368/BHZbMYyLTpMXB8iDSAjZDPZF8i9LZEtqcwf4VPsPuywScwyJjsuxwmR05aIvylHKPbfX"
 getgenv().webhook = "https://discord.com/api/webhooks/1189489437130899456/cY5c12rmklRLRBAjvQQNj-QAxg2HbQhbfBZ0LCGSVM5KNeoGwW11VoCY0Gg0Q4SE-tgS"
 getgenv().alts = {"splasie", "universoul20","universoul30","Tygotelindert","BrendaParker7","Itz_KIDDz5"}
 if game.PlaceId == 15502339080 then
