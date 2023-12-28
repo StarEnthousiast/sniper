@@ -110,59 +110,100 @@ local function checklisting(uid, gems, item, version, shiny, amount, username, p
     end)
 
     if type.exclusiveLevel and gems <= 10000 and not (item == "Banana" or item == "Coin") then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+	if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+	end
     elseif type.huge and gems <= 3000000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+	if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+	end
     elseif type.titanic and gems <= 10000000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Crystal Key Upper Half") and gems <= 20000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
-elseif string.find(item, "Huge") and gems <= 3000000 and not (item == "Huge Hunter") then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
+    elseif string.find(item, "Huge") and gems <= 3000000 and not (item == "Huge Hunter") then
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Crystal Key Lower Half") and gems <= 10000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Crystal Key") and gems <= 40000 and not (item == "Crystal Key Lower Half" or item == "Crystal Key Upper Half") then 
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Spinny Wheel Ticket") and gems <= 19000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+         if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Hologram Shark") and gems <= 130000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
+    elseif string.find(item, "Rift Dragon") and gems <= 130000 then
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Titanic Present") and gems <= 300000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Lucky Block") and gems <= 100000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Huge Hunter") and gems <= 1000000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Fortune") and gems <= 110000 and not (item == "Fortune Flag") then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Royalty Charm") and gems <= 2500000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Strength Charm") and gems <= 100000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Chest Mimic") and gems <= 500000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Exclusive Egg") and gems <= 300000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     elseif string.find(item, "Titanic Christmas Present") and gems <= 10000 then
-        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-        processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        local bought = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+        if bought == true then
+            processListingInfo(uid, gems, item, version, shiny, amount, username, exclusive)
+        end
     end
 end
 
