@@ -212,7 +212,7 @@ local function checklisting(uid, gems, item, version, shiny, amount, username, p
         if boughtPet == true then
             processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet)
         end
-    elseif string.find(item, "Chest Mimic") and gems <= 500000 then
+    elseif string.find(item, "Chest Mimic") and gems <= 500000 and not (item == "Present Chest Mimic") then
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         if boughtPet == true then
             processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet)
